@@ -26,9 +26,7 @@ The command line tool will have you pick a node version manager and node package
 
 ### Installing the project
 
-If you want to manage your own project on Github, you can copy this repo as a template (no connection to the parent project) or clone/fork it (to maintain a connection).
-
-Alternatively, you can download a .zip file using the Code button and just keep it locally on your machine, without version control.
+If you want to manage your own project on Github, you can copy this repo as a template. Alternatively, you can download a .zip file using the Code button and just keep it locally on your machine, without version control.
 
 > [!TIP]
 > I recommend using [VS Code](https://code.visualstudio.com/Download) since it combines your text editor and your terminal in one app.
