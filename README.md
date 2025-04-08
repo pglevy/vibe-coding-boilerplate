@@ -50,9 +50,8 @@ Whenever you want to run the project again, you'll just use the command `npm run
 1. Generate a page with an LLM like Claude. (Ask it to use shadcn components.)
 1. Once it displays correctly in the LLM UI, download the file, which will probably be a typescript file (.tsx).
 1. Move the file, e.g., signup-form.tsx to the `/src/pages` directory in your project.
-1. In the `/src/App.tsx` file, follow the examples to `import` your new file and add it to the router switch as a `<Route />`.
 
-If the development server is running, the browser should refresh automatically when adding pages or making changes. If you've just added a new page, you'll need to go to the URL defined in the router to see it.
+If the development server is running, the browser should refresh automatically when adding pages or making changes. If you've just added a new page, you'll need to go to the URL to see it (page name without suffix, e.g., `localhost:5173/signup-form`).
 
 > [!TIP]
 > The import statement lets your main app know the page exists and the router points the browser to that file based on the URL defined.
