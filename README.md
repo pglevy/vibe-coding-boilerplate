@@ -35,15 +35,15 @@ Either way, once you have a copy of the project on your machine (and unzipped), 
 
 Use the "change directory" command to navigate to the folder. It should look something like this: `cd ~/Documents/vite-boilerplate`. You can check where you are with the "print working directory" command, `pwd`.
 
-Once you're in the project directory, run this command: `npm install`. This will install all the necessary files locally to run the project.
+Once you're in the project directory, run this command: `npm install --legacy-peer-deps`. This will install all the necessary files locally to run the project. The [legacy-peer-dependency flag](https://ui.shadcn.com/docs/react-19#solution-1---force-or---legacy-peer-deps) ignores dependency conflicts, which shouldn't cause problems.
 
 ## Running the project
 
-If everything went OK with installation, now you can run this command to start the project: `npm run dev`. This runs the project in development mode. If it works, you'll see a message that it's now running on a local server, for example, `Local: http://localhost:5173/`. You can click on that link (maybe with a modifier key) to see the site running in your browser.
+If everything went OK with installation, now you can run this command to start the project: `npm run dev`. This runs the project in development mode. If it works, you'll see a message that it's now running on a local server, for example, `Local: http://localhost:5173/`. You can click on that link (maybe with a modifier key) to see the site running in your browser, or just copy and paste.
 
 To stop the server, the command is usually `control-C`.
 
-Whenever you want to run the project again, you'll just use the command `npm run dev` again. You don't have to reinstall. Periodically, you may want to run `npm update` to update the package dependencies.
+Whenever you want to run the project again, you'll just use the command `npm run dev` again. You don't have to reinstall. Periodically, you may want to run `npm update --legacy-peer-deps` to update the package dependencies.
 
 ## Adding pages
 
