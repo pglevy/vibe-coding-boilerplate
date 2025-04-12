@@ -41,6 +41,10 @@ Once you're in the project directory, run this command: `npm install --legacy-pe
 
 If everything went OK with installation, now you can run this command to start the project: `npm run dev`. This runs the project in development mode. If it works, you'll see a message that it's now running on a local server, for example, `Local: http://localhost:5173/`. You can click on that link (maybe with a modifier key) to see the site running in your browser, or just copy and paste.
 
+If it's running you should see this in your browser at the localhost URL:
+
+![Screenshot of homepage](public/home-confirmation.png)
+
 To stop the server, the command is usually `control-C`.
 
 Whenever you want to run the project again, you'll just use the command `npm run dev` again. You don't have to reinstall. Periodically, you may want to run `npm update --legacy-peer-deps` to update the package dependencies.

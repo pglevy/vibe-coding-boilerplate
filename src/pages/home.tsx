@@ -9,7 +9,7 @@ function Home() {
 
   return (
     <>
-      <div>
+      <div className="flex flex-row items-center justify-center mt-8">
         <a href="https://vite.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
         </a>
@@ -17,21 +17,19 @@ function Home() {
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
+      <div className="flex flex-col items-center justify-center">
+        <h1 className="text-3xl font-bold mb-8">Vite + React</h1>
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
         </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
+        <Button onClick={() => setCount((count) => count + 1)}>Click me</Button>
+        <p className="mt-8">
+        It’s working!
+        </p>
+        <p className="mt-8">
+        Check out the <Link to="/button-demo" className="text-blue-600 underline">Button</Link> and <Link to="/form-demo" className="text-blue-600 underline">Form</Link> demo pages.
         </p>
       </div>
-      <p className="read-the-docs">
-      <Link href="/not-found">Click on the Vite and React logos to learn more</Link>
-      </p>
-      <div className="flex flex-col items-center justify-center min-h-svh">
-      <Button onClick={() => setCount((count) => count + 1)}>Click me</Button>
-    </div>
     </>
   )
 }
