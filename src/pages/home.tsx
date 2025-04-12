@@ -27,7 +27,7 @@ function Home() {
         It’s working!
         </p>
         <p className="mt-8">
-        Check out the <Link to="/button-demo" className="text-blue-600 underline">Button</Link> and <Link to="/form-demo" className="text-blue-600 underline">Form</Link> demo pages.
+        Check out the <Link to="demo/button-demo" className="text-blue-600 underline">Button</Link> and <Link to="demo/form-demo" className="text-blue-600 underline">Form</Link> demo pages.
         </p>
       </div>
     </>
