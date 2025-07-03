@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -6,7 +6,6 @@ import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Switch } from "@/components/ui/switch";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -20,7 +19,7 @@ const FormDemoPage = () => {
     email: "",
     phone: "",
     country: "United States",
-    interests: [],
+    interests: [] as string[],
     bio: "",
     newsletter: false,
     notifications: {
@@ -29,7 +28,7 @@ const FormDemoPage = () => {
     }
   });
 
-  const handleInputChange = (e) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormValues({
       ...formValues,
@@ -37,24 +36,25 @@ const FormDemoPage = () => {
     });
   };
 
-  const handleCheckboxChange = (checked, id) => {
+  const handleCheckboxChange = (checked: boolean | string, id: string) => {
+    const isChecked = checked === true;
     if (id === "newsletter") {
       setFormValues({
         ...formValues,
-        newsletter: checked
+        newsletter: isChecked
       });
     } else {
       // For interests array
       setFormValues({
         ...formValues,
-        interests: checked 
+        interests: isChecked 
           ? [...formValues.interests, id]
           : formValues.interests.filter(item => item !== id)
       });
     }
   };
 
-  const handleSwitchChange = (checked, id) => {
+  const handleSwitchChange = (checked: boolean, id: string) => {
     setFormValues({
       ...formValues,
       notifications: {
@@ -64,7 +64,7 @@ const FormDemoPage = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log("Form submitted:", formValues);
     setFormSubmitted(true);
@@ -264,7 +264,7 @@ const FormDemoPage = () => {
                   email: "",
                   phone: "",
                   country: "United States",
-                  interests: [],
+                  interests: [] as string[],
                   bio: "",
                   newsletter: false,
                   notifications: {
