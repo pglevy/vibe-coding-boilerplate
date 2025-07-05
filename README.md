@@ -104,3 +104,64 @@ If you've just added a new page, enter the URL manually to see it (page name wit
 ## Styling components
 
 Use the standard Tailwind syntax to style components. With React, you apply these using the `className` attribute. See some of the demo page examples.
+
+## Taking Screenshots with Playwright MCP
+
+You can use Amazon Q with the Playwright MCP server to take automated screenshots of your prototypes for documentation and sharing on digital whiteboards.
+
+### Setup
+
+1. **Configure Amazon Q MCP**: Add the Playwright server to your MCP configuration:
+   ```bash
+   open -e ~/.aws/amazonq/mcp.json
+   ```
+   
+   Add this to your `mcpServers` section:
+   ```json
+   "playwright": {
+     "command": "npx",
+     "args": ["@modelcontextprotocol/server-playwright"]
+   }
+   ```
+
+2. **Start your development server**: Make sure your prototype is running:
+   ```bash
+   npm run dev
+   ```
+
+### Taking Screenshots
+
+#### Basic Example (Multiple Tabs)
+For capturing all tabs of a multi-tab interface:
+
+```
+Using playwright mcp, take screenshots of this page with each of the tabs selected: http://localhost:5173/#/your-page-route. Save them to the screenshots folder with descriptive names like tab1-overview.png, tab2-details.png, etc.
+```
+
+#### Full-Height Screenshots (Recommended)
+Since the Playwright MCP doesn't support true full-page screenshots, use the resize method to capture more content:
+
+```
+Resize browser to 1920x4000, then take a screenshot and save it to /Users/[your-username]/Documents/[your-project]/screenshots/full-height-screenshot.png, (optional: then reset browser to 1280x720)
+```
+
+### Tips & Workarounds
+
+- **File Paths**: Use absolute paths to ensure screenshots save to your project folder instead of temporary directories
+- **Copying from Temp**: If screenshots end up in temp folders, you can ask Q to move them or copy them with this command in a separate terminal:
+  ```bash
+  cp "/path/to/temp/screenshot.png" "/Users/[username]/path/to/project/screenshots/"
+  ```
+- **Viewport Sizes**: 
+  - You can mention specific sizes to keep things consisten, for example, 1280x720
+  - For full-height, either ask Q to make the adjustment or specify an extra tall height, for example, 1920x4000
+- **File Naming**: If for particular description names if you have a preference, for example, `overview-tab.png`, `full-height-dashboard.png`
+
+### Example Workflow
+
+1. Start development server: `npm run dev`
+2. Open Amazon Q chat
+3. Use this prompt template:
+   ```
+   Resize browser to 1920x4000, navigate to http://localhost:5173/#/my-page, take a screenshot and save it to /Users/[username]/Documents/[your-project]/screenshots/my-page-full.png, then reset browser to 1280x720
+   ```
