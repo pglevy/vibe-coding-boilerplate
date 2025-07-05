@@ -1,4 +1,4 @@
-import React from 'react';
+// React import not needed in modern React with JSX transform
 import { Button } from "@/components/ui/button";
 import { Download, Send, Loader2 } from "lucide-react";
 
