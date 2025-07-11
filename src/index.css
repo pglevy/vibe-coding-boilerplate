@@ -67,7 +67,7 @@
 
 /* stylelint-disable-next-line at-rule-no-unknown */
 @layer utilities {
-  /* SAIL Text Sizes */
+  /* SAIL Text Sizes - Only font size and line height, no color */
   .text-sail-small {
     font-size: var(--font-size-sail-small);
     line-height: var(--line-height-sail-small);
@@ -97,8 +97,7 @@
     line-height: var(--line-height-sail-extra-large);
   }
 
-  /* SAIL Text Colors */
-  .text-sail-standard { color: var(--color-sail-standard); }
+  /* SAIL Text Colors - Separate from font sizes */
   .text-sail-accent { color: var(--color-sail-accent); }
   .text-sail-positive { color: var(--color-sail-positive); }
   .text-sail-negative { color: var(--color-sail-negative); }
