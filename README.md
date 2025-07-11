@@ -107,14 +107,16 @@ Use the standard Tailwind syntax to style components. With React, you apply thes
 
 ## Taking Screenshots with Playwright MCP
 
-You can use Amazon Q with the Playwright MCP server to take automated screenshots of your prototypes for documentation and sharing on digital whiteboards.
+You can use Amazon Q with the Playwright MCP server to take automated screenshots of your prototypes for documentation and sharing on digital whiteboards. These instructions assume you have Amazon Q up and running.
 
 ### Setup
 
-1. **Configure Amazon Q MCP**: Add the Playwright server to your MCP configuration:
+1. **Configure Amazon Q MCP**: Open your config file in VS Code. Run this command in a terminal:
    ```bash
-   open -e ~/.aws/amazonq/mcp.json
+   code ~/.aws/amazonq/mcp.json
    ```
+
+   *If this file doesn't exist*, you can run this in a terminal to create the file in this location: `mkdir -p ~/.aws/amazonq && touch ~/.aws/amazonq/mcp.json`
    
    Add this to your `mcpServers` section:
    ```json
