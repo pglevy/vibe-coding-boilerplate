@@ -1,5 +1,6 @@
 @import "tailwindcss";
 
+/* stylelint-disable-next-line at-rule-no-unknown */
 @theme inline {
 
   /* SAIL-mapped text sizes */
@@ -56,12 +57,15 @@
 
 }
 
+/* stylelint-disable-next-line at-rule-no-unknown */
 @layer base {
   body {
+    /* stylelint-disable-next-line at-rule-no-unknown */
     @apply bg-white text-black;
   }
 }
 
+/* stylelint-disable-next-line at-rule-no-unknown */
 @layer utilities {
   /* SAIL Text Sizes */
   .text-sail-small {
@@ -93,7 +97,7 @@
     line-height: var(--line-height-sail-extra-large);
   }
 
-  /* SAIL Colors */
+  /* SAIL Text Colors */
   .text-sail-standard { color: var(--color-sail-standard); }
   .text-sail-accent { color: var(--color-sail-accent); }
   .text-sail-positive { color: var(--color-sail-positive); }
