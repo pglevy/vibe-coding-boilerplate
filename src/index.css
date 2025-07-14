@@ -29,6 +29,22 @@
   --color-sail-bg-standard: #ffffff;
   --color-sail-bg-success: #e8f5e8;
   --color-sail-bg-error: #fdeaea;
+  
+  /* Additional SAIL background colors from Appian mockup */
+  --color-sail-bg-light: #f8f9fa;
+  --color-sail-bg-page: #f5f5f5;
+  --color-sail-bg-card: #ffffff;
+  
+  /* SAIL card border colors (top accent borders) */
+  --color-sail-purple: #6366f1;
+  --color-sail-green: #10b981;
+  --color-sail-blue: #3b82f6;
+  --color-sail-orange: #f59e0b;
+  
+  /* SAIL tab and navigation colors */
+  --color-sail-tab-bg: #ffffff;
+  --color-sail-tab-border: #e5e7eb;
+  --color-sail-tab-active: #1976d2;
 
   /* SAIL-mapped spacing */
   --spacing-sail-none: 0;
@@ -54,6 +70,13 @@
   --height-sail-medium: 12rem;
   --height-sail-tall: 16rem;
   --height-sail-auto: auto;
+
+  /* SAIL card shadows and layout */
+  --shadow-sail-card: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --shadow-sail-card-hover: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  
+  /* SAIL card top border thickness */
+  --border-top-sail-accent: 4px;
 
 }
 
@@ -108,6 +131,9 @@
   .bg-sail-bg-standard { background-color: var(--color-sail-bg-standard); }
   .bg-sail-bg-success { background-color: var(--color-sail-bg-success); }
   .bg-sail-bg-error { background-color: var(--color-sail-bg-error); }
+  .bg-sail-bg-light { background-color: var(--color-sail-bg-light); }
+  .bg-sail-bg-page { background-color: var(--color-sail-bg-page); }
+  .bg-sail-bg-card { background-color: var(--color-sail-bg-card); }
 
   /* SAIL Border Colors */
   .border-sail-standard { border-color: var(--color-sail-standard); }
@@ -115,6 +141,11 @@
   .border-sail-positive { border-color: var(--color-sail-positive); }
   .border-sail-negative { border-color: var(--color-sail-negative); }
   .border-sail-secondary { border-color: var(--color-sail-secondary); }
+  .border-sail-purple { border-color: var(--color-sail-purple); }
+  .border-sail-green { border-color: var(--color-sail-green); }
+  .border-sail-blue { border-color: var(--color-sail-blue); }
+  .border-sail-orange { border-color: var(--color-sail-orange); }
+  .border-sail-tab-border { border-color: var(--color-sail-tab-border); }
 
   /* SAIL Spacing */
   .p-sail-none { padding: var(--spacing-sail-none); }
@@ -183,4 +214,58 @@
   .h-sail-medium { height: var(--height-sail-medium); }
   .h-sail-tall { height: var(--height-sail-tall); }
   .h-sail-auto { height: var(--height-sail-auto); }
+
+  /* SAIL Card Styles */
+  .card-sail {
+    background-color: var(--color-sail-bg-card);
+    border-radius: var(--radius-sail-semi-rounded);
+    box-shadow: var(--shadow-sail-card);
+    border: var(--border-width-sail-thin) solid var(--color-sail-tab-border);
+  }
+  
+  .card-sail:hover {
+    box-shadow: var(--shadow-sail-card-hover);
+  }
+  
+  /* SAIL Card Top Borders */
+  .card-sail-purple {
+    border-top: var(--border-top-sail-accent) solid var(--color-sail-purple);
+  }
+  
+  .card-sail-green {
+    border-top: var(--border-top-sail-accent) solid var(--color-sail-green);
+  }
+  
+  .card-sail-blue {
+    border-top: var(--border-top-sail-accent) solid var(--color-sail-blue);
+  }
+  
+  .card-sail-orange {
+    border-top: var(--border-top-sail-accent) solid var(--color-sail-orange);
+  }
+
+  /* SAIL Tab Navigation */
+  .tab-sail-nav {
+    background-color: var(--color-sail-tab-bg);
+    border-bottom: var(--border-width-sail-thin) solid var(--color-sail-tab-border);
+    padding: var(--spacing-sail-less) var(--spacing-sail-standard);
+  }
+  
+  .tab-sail-item {
+    padding: var(--spacing-sail-less) var(--spacing-sail-standard);
+    border-bottom: 2px solid transparent;
+    color: var(--color-sail-secondary);
+    text-decoration: none;
+    font-weight: 500;
+  }
+  
+  .tab-sail-item:hover {
+    color: var(--color-sail-standard);
+    background-color: var(--color-sail-bg-light);
+  }
+  
+  .tab-sail-item.active {
+    color: var(--color-sail-tab-active);
+    border-bottom-color: var(--color-sail-tab-active);
+  }
 }
