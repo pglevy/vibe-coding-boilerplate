@@ -232,7 +232,7 @@ const KPICard = ({ kpi, onClick, needsConfiguration = false }) => {
   return (
     <div 
       onClick={onClick}
-      className="cursor-pointer rounded-sail-semi-rounded border border-sail-secondary p-sail-less transition-all bg-sail-bg-standard text-sail-standard hover:border-sail-accent hover:shadow-md"
+      className="cursor-pointer card-sail-no-shadow p-sail-less transition-all hover:border-sail-accent"
     >
       <div className="flex items-center justify-between mb-sail-even-less">
         <Icon className={`h-4 w-4 ${
@@ -253,7 +253,7 @@ const KPICard = ({ kpi, onClick, needsConfiguration = false }) => {
         {kpi.title}
       </h3>
       {needsConfiguration ? (
-        <button className="w-full mt-sail-even-less px-sail-even-less py-sail-even-less border border-sail-secondary bg-sail-bg-standard text-sail-secondary rounded-sail-semi-rounded text-sail-small hover:bg-gray-50 transition-colors">
+        <button className="w-full mt-sail-even-less px-sail-even-less py-sail-even-less border border-sail-secondary bg-sail-bg-standard text-sail-secondary rounded-sail-semi-rounded text-sail-small hover:bg-sail-bg-light transition-colors">
           Configure
         </button>
       ) : (
@@ -275,8 +275,18 @@ const KPICard = ({ kpi, onClick, needsConfiguration = false }) => {
 const ProcessCard = ({ process, onProcessClick }) => {
   const statusColor = process.status === 'active' ? 'bg-sail-bg-success text-sail-positive' : 'bg-gray-100 text-sail-secondary';
   
+  // Assign different colors to different process types
+  const getCardColorClass = (processId) => {
+    switch (processId) {
+      case 'medical-claims': return 'card-sail-blue';
+      case 'pharmacy-claims': return 'card-sail-green'; 
+      case 'dental-claims': return 'card-sail-purple';
+      default: return 'card-sail-orange';
+    }
+  };
+  
   return (
-    <div className="bg-sail-bg-standard rounded-sail-semi-rounded shadow-sm border border-sail-secondary p-sail-standard hover:shadow-md transition-shadow">
+    <div className={`card-sail ${getCardColorClass(process.id)} bg-sail-bg-card p-sail-standard`}>
       {/* Process Header */}
       <div className="flex items-center justify-between mb-sail-standard">
         <div className="flex-1">
@@ -348,47 +358,69 @@ export default function ProcessListDashboard() {
   });
 
   return (
-    <div className="min-h-screen bg-gray-50 p-sail-standard">
-      <div className="max-w-7xl mx-auto">
-        {/* Header */}
-        <div className="mb-sail-standard">
-          <div className="flex items-end justify-between">
-            <div>
-              <h1 className="text-sail-extra-large font-bold text-sail-standard">Process Overview</h1>
-              <p className="text-sail-secondary mt-sail-even-less">Monitor and analyze your business processes</p>
+    <div className="min-h-screen bg-sail-bg-light">
+      {/* Application Header */}
+      <div className="app-header-sail">
+        <div className="flex items-center gap-3">
+          <div className="w-6 h-6 bg-white rounded-sm flex items-center justify-center">
+            <span className="text-blue-600 font-bold text-sm">A</span>
+          </div>
+          <span className="font-semibold text-gray-800">Appian Designer</span>
+        </div>
+        <div className="flex items-center gap-3">
+          <button className="text-gray-700 hover:text-gray-900 transition-colors">
+            <Search className="h-5 w-5" />
+          </button>
+          <button className="text-gray-700 hover:text-gray-900 transition-colors">
+            <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">
+              <Users className="h-4 w-4" />
             </div>
-            <div className="flex items-end gap-4">
-              <div className="flex flex-col gap-1">
-                <span className="text-sail-standard text-sail-secondary font-medium">Time Period</span>
-                <select className="border border-sail-secondary rounded-sail-semi-rounded px-sail-less py-sail-even-less text-sail-standard h-10">
-                  <option>Last 6 Months</option>
-                  <option>Last 30 Days</option>
-                  <option>Last 12 Months</option>
-                  <option>All Time</option>
-                </select>
-              </div>
-              <button
-                onClick={handleRefresh}
-                className="px-sail-standard py-sail-even-less border border-sail-secondary bg-transparent text-sail-standard rounded-sail-semi-rounded hover:bg-gray-50 h-10 text-sail-standard"
-              >
-                Refresh
-              </button>
-            </div>
+          </button>
+          <div className="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center">
+            <span className="text-gray-600 text-sm font-medium">PL</span>
           </div>
         </div>
+      </div>
+      
+      {/* Page Heading Section */}
+      <div className="page-heading-sail mb-sail-more">
+        <div className="max-w-7xl mx-auto">
+          {/* Header */}
+          <div className="mb-sail-standard">
+            <div className="flex items-end justify-between">
+              <div>
+                <h1 className="text-sail-extra-large font-bold text-sail-standard">Process Overview</h1>
+                <p className="text-sail-secondary mt-sail-even-less">Monitor and analyze your business processes</p>
+              </div>
+              <div className="flex items-end gap-4">
+                <div className="flex flex-col gap-1">
+                  <span className="text-sail-standard text-sail-secondary font-medium">Time Period</span>
+                  <select className="border border-sail-secondary rounded-sail-semi-rounded px-sail-less py-sail-even-less text-sail-secondary h-10">
+                    <option>Last 6 Months</option>
+                    <option>Last 30 Days</option>
+                    <option>Last 12 Months</option>
+                    <option>All Time</option>
+                  </select>
+                </div>
+                <button
+                  onClick={handleRefresh}
+                  className="px-sail-standard py-sail-even-less border border-sail-secondary bg-transparent text-sail-secondary rounded-sail-semi-rounded hover:bg-sail-bg-light h-10"
+                >
+                  Refresh
+                </button>
+              </div>
+            </div>
+          </div>
 
-        {/* Separator */}
-        <div className="border-b border-sail-secondary mb-sail-standard"></div>
-
-        {/* Search and Filters */}
-        <div className="mb-sail-standard">
-          <div className="flex items-center gap-4">
+          {/* Search and Filters */}
+          <div>
+            <div className="flex items-center gap-4">
             <div className="flex flex-col gap-1">
                 <span className="text-sail-standard text-sail-secondary font-medium sr-only">Status Filter</span>
                 <select 
                   value={statusFilter}
                   onChange={(e) => setStatusFilter(e.target.value)}
-                  className="border border-sail-secondary rounded-sail-semi-rounded px-sail-less py-sail-even-less text-sail-standard h-10"
+                  className="border border-sail-secondary rounded-sail-semi-rounded px-sail-less py-sail-even-less text-sail-secondary min-h-[2.125rem]"
                 >
                   <option value="all">All Processes</option>
                   <option value="active">Active</option>
@@ -402,20 +434,24 @@ export default function ProcessListDashboard() {
                 placeholder="Search processes..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-10 pr-4 py-sail-even-less border border-sail-secondary rounded-sail-semi-rounded text-sail-standard focus:outline-none focus:ring-2 focus:ring-sail-accent focus:border-transparent"
+                className="w-full pl-10 pr-4 py-sail-even-less border border-sail-secondary rounded-sail-semi-rounded text-sail-secondary focus:outline-none focus:ring-2 focus:ring-sail-accent focus:border-transparent"
               />
             </div>
-            <button className="flex items-center gap-2 px-sail-less py-sail-even-less border border-sail-secondary rounded-sail-semi-rounded text-sail-standard hover:bg-gray-50">
+            <button className="flex items-center gap-2 px-sail-less py-sail-even-less border border-sail-secondary rounded-sail-semi-rounded text-sail-secondary hover:bg-sail-bg-light">
               <Filter className="h-4 w-4" />
               More Filters
             </button>
-            <button className="flex items-center gap-2 px-sail-less py-sail-even-less border border-sail-secondary rounded-sail-semi-rounded text-sail-standard hover:bg-gray-50">
+            <button className="flex items-center gap-2 px-sail-less py-sail-even-less border border-sail-secondary rounded-sail-semi-rounded text-sail-secondary hover:bg-sail-bg-light">
               <Download className="h-4 w-4" />
               Export
             </button>
+            </div>
           </div>
         </div>
+      </div>
 
+      {/* Main Content */}
+      <div className="max-w-7xl mx-auto p-sail-standard">
         {/* Process Cards */}
         <div className="space-y-sail-standard">
           {filteredProcesses.map((process) => (
@@ -428,7 +464,7 @@ export default function ProcessListDashboard() {
         </div>
 
         {filteredProcesses.length === 0 && (
-          <div className="bg-sail-bg-standard rounded-sail-semi-rounded shadow-sm border border-sail-secondary p-sail-even-more text-center">
+          <div className="card-sail p-sail-even-more text-center">
             <Search className="h-12 w-12 text-sail-secondary mx-auto mb-sail-standard" />
             <h3 className="text-sail-medium-plus font-medium text-sail-standard mb-sail-even-less">No processes found</h3>
             <p className="text-sail-secondary">Try adjusting your search terms or filters.</p>
