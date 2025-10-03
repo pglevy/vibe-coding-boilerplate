@@ -20,7 +20,7 @@ After installing:
 
 ### 2. Install the `Dev Containers` VS Code Extension
 
-In VS Code:
+[Download VS Code](https://code.visualstudio.com/download) if you haven't already, then:
 
 1. Open the Extensions panel (Command/Ctrl + Shift + X)
 2. Search for "Dev Containers"
